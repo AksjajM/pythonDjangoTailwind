@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.template import loader
 from .models import Member
 
@@ -26,5 +27,14 @@ def main(request):
     return HttpResponse(template.render())
 
 def testing(request):
-  template = loader.get_template('template.html')
-  return HttpResponse(template.render())
+    username = request.user.username
+    template = loader.get_template('template.html')
+    context = {'username': username}
+    return HttpResponse(template.render(context))
+#
+# def testing(request):
+#   if request.user:
+#       username = request.user.username
+#       return render(request, 'template.html', {'username': username})
+#   else:
+#       return render(request, 'template.html')
