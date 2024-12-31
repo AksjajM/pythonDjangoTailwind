@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 creds.md
+.env
 
 # C extensions
 *.so
